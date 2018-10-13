@@ -4,7 +4,8 @@ class DevelopDir extends Component {
   constructor(props){
       super(props);
       this.state = {
-        files: {}
+        files: [],
+        bool: false
       }
   }
   componentWillMount = () => {
@@ -14,7 +15,7 @@ class DevelopDir extends Component {
   goDeeperInDir = () => {
     fetch (this.props.children.url, {
     headers: {
-      Authorization: `Bearer ${'03411d0bb78267a2740ea574c37a5eea1e0dabaa'}`
+      Authorization: `Bearer ${'c9415a32d1f64b67ada3edd3a53743aa2c2f6aba'}`
     }
   })
       .then(result => result.json())
@@ -23,7 +24,7 @@ class DevelopDir extends Component {
           const promises = urlArr.map(
             urlSingle => fetch(urlSingle.url, {
             headers: {
-              Authorization: `Bearer ${'03411d0bb78267a2740ea574c37a5eea1e0dabaa'}`
+              Authorization: `Bearer ${'c9415a32d1f64b67ada3edd3a53743aa2c2f6aba'}`
             }
           })
 
@@ -36,18 +37,28 @@ class DevelopDir extends Component {
   }
 
   handleClick = () => {
-    this.state.files.map((file, index) =>
-      <div style={{paddinLeft: '5px', color: 'green'}}>{file.name}</div>
-    )
+    this.setState({
+      bool: !this.state.bool
+    })
   }
 
   render() {
-    console.table(this.state.files)
+    // console.table(this.state.files)
+    if (this.state.bool) {
+      return(
+      <div onClick={this.handleClick}>
+        {this.state.files.map((file, index) => (
+          <div key={index} style={{color: 'green'}}>{file.name}</div>
+        ))}
+      </div>
+      )
+    } else {
     return(
       <div>
         <div style={{color: 'blue'}} onClick={this.handleClick}>{this.props.children.name}</div>
       </div>
     )
+  }
   }
 }
 

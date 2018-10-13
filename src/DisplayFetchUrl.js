@@ -17,9 +17,9 @@ class DisplayFetchUrl extends Component {
 
 
   getRepos = () => {
-    fetch ('https://api.github.com/users/EvaSpessotto/repos', {
+    fetch ('https://api.github.com/users/NelsonHui123/repos', {
     headers: {
-      Authorization: `Bearer ${'03411d0bb78267a2740ea574c37a5eea1e0dabaa'}`
+      Authorization: `Bearer ${'c9415a32d1f64b67ada3edd3a53743aa2c2f6aba'}`
     }
   })
 
@@ -29,7 +29,7 @@ class DisplayFetchUrl extends Component {
         const promises = repoArr.map(
           repoSingle => fetch(repoSingle.url+'/contents', {
           headers: {
-            Authorization: `Bearer ${'03411d0bb78267a2740ea574c37a5eea1e0dabaa'}`
+            Authorization: `Bearer ${'c9415a32d1f64b67ada3edd3a53743aa2c2f6aba'}`
           }
         })
 
@@ -44,21 +44,21 @@ class DisplayFetchUrl extends Component {
     }
 
   render() {
-    console.table(this.state.reposList)
+    // console.table(this.state.reposList)
     return (
       <div>
-      {this.state.reposList.map( repo => {
+      {this.state.reposList.map( (repo, index) => {
         return (
-          <div>
+          <div key={index}>
             <hr/>
-            {repo.map(fichier => {
+          {repo.map((fichier, index) => {
               if (fichier.type === 'dir') {
                 return (
-                  <DevelopDir>{fichier}</DevelopDir>
+                  <DevelopDir key={index}>{fichier}</DevelopDir>
                 )
               } else {
                 return (
-                <div>{fichier.name}</div>
+                <div key={index}>{fichier.name}</div>
               )
               }
             })
