@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import DevelopDir from './DevelopDir'
 
 class DisplayFetchUrl extends Component {
 
@@ -44,7 +45,7 @@ class DisplayFetchUrl extends Component {
             {repo.map(fichier => {
               if (fichier.type === 'dir') {
                 return (
-                  <div style={{color: 'blue'}}>{fichier.name}</div>
+                  <DevelopDir>{fichier}</DevelopDir>
                 )
               } else {
                 return (
