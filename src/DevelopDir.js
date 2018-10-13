@@ -15,7 +15,7 @@ class DevelopDir extends Component {
   goDeeperInDir = () => {
     fetch (this.props.children.url, {
     headers: {
-      Authorization: `Bearer ${'c9415a32d1f64b67ada3edd3a53743aa2c2f6aba'}`
+      Authorization: `Bearer ${''}`
     }
   })
       .then(result => result.json())
@@ -24,7 +24,7 @@ class DevelopDir extends Component {
           const promises = urlArr.map(
             urlSingle => fetch(urlSingle.url, {
             headers: {
-              Authorization: `Bearer ${'c9415a32d1f64b67ada3edd3a53743aa2c2f6aba'}`
+              Authorization: `Bearer ${''}`
             }
           })
 

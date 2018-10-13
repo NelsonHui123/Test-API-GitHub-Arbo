@@ -19,7 +19,7 @@ class DisplayFetchUrl extends Component {
   getRepos = () => {
     fetch ('https://api.github.com/users/NelsonHui123/repos', {
     headers: {
-      Authorization: `Bearer ${'c9415a32d1f64b67ada3edd3a53743aa2c2f6aba'}`
+      Authorization: `Bearer ${''}`
     }
   })
 
@@ -29,7 +29,7 @@ class DisplayFetchUrl extends Component {
         const promises = repoArr.map(
           repoSingle => fetch(repoSingle.url+'/contents', {
           headers: {
-            Authorization: `Bearer ${'c9415a32d1f64b67ada3edd3a53743aa2c2f6aba'}`
+            Authorization: `Bearer ${''}`
           }
         })
 
