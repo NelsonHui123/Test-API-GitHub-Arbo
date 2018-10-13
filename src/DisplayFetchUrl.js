@@ -15,14 +15,23 @@ class DisplayFetchUrl extends Component {
     this.getRepos();
   }
 
+
   getRepos = () => {
-    fetch ('https://api.github.com/users/EvaSpessotto/repos')
+    fetch ('https://api.github.com/users/EvaSpessotto/repos', {
+    headers: {
+      Authorization: `Bearer ${'03411d0bb78267a2740ea574c37a5eea1e0dabaa'}`
+    }
+  })
 
     .then(result => result.json())
 
     .then(repoArr => {
         const promises = repoArr.map(
-          repoSingle => fetch(repoSingle.url+'/contents')
+          repoSingle => fetch(repoSingle.url+'/contents', {
+          headers: {
+            Authorization: `Bearer ${'03411d0bb78267a2740ea574c37a5eea1e0dabaa'}`
+          }
+        })
 
             .then(result => result.json())
         )
